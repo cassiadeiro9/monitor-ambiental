@@ -34,21 +34,26 @@ body {
 }
 
 header {
-  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   padding:20px;
   background:var(--header);
   color:white;
   position:relative;
+  text-align:center;
 }
 
 button.theme{
   position:absolute;
-  right:15px;
-  top:15px;
-  padding:8px;
+  left:10px;
+  top:10px;
+  padding:4px 6px;
   border:none;
   cursor:pointer;
-  border-radius:8px;
+  border-radius:6px;
+  font-size:10px;
 }
 
 /* ================= CARDS ================= */
@@ -58,7 +63,6 @@ button.theme{
   gap:15px;
 }
 
-/* 🔥 MELHORIA VISUAL */
 .card {
   background:var(--card);
   padding:18px;
@@ -72,57 +76,26 @@ button.theme{
   transform:translateY(-5px);
 }
 
-/* ================= ÍCONES COLORIDOS ================= */
 .card i{
   font-size:28px;
   margin-bottom:8px;
 }
 
-/* cores ícones */
 .fa-wind{ color:#00bcd4; }
 .fa-tint{ color:#2196f3; }
 .fa-bolt{ color:#ff9800; }
 .fa-recycle{ color:#4caf50; }
 .fa-leaf{ color:#2ecc71; }
 
-/* ================= NÚMEROS COLORIDOS ================= */
-#ar{
-  color:#00bcd4;
-  font-weight:bold;
-}
+#ar{ color:#00bcd4; font-weight:bold; }
+#agua{ color:#2196f3; font-weight:bold; }
+#energia{ color:#ff9800; font-weight:bold; }
+#reciclagem{ color:#4caf50; font-weight:bold; }
+#indice{ color:#2ecc71; font-weight:bold; }
 
-#agua{
-  color:#2196f3;
-  font-weight:bold;
-}
+.card h3{ margin:5px 0; }
+.card h2{ margin:5px 0 0; font-size:22px; }
 
-#energia{
-  color:#ff9800;
-  font-weight:bold;
-}
-
-#reciclagem{
-  color:#4caf50;
-  font-weight:bold;
-}
-
-#indice{
-  color:#2ecc71;
-  font-weight:bold;
-}
-
-/* título */
-.card h3{
-  margin:5px 0;
-}
-
-/* valor */
-.card h2{
-  margin:5px 0 0;
-  font-size:22px;
-}
-
-/* ================= FORM ================= */
 .formulario {
   margin-top:20px;
   display:grid;
@@ -136,7 +109,6 @@ input {
   border:1px solid #ccc;
 }
 
-/* ================= BOTÕES ================= */
 button {
   margin-top:10px;
   padding:10px;
@@ -147,12 +119,17 @@ button {
   border-radius:8px;
 }
 
-/* ================= GRÁFICOS ================= */
 .graficos {
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap:20px;
   margin-top:20px;
+}
+
+/* 🔥 CENTRALIZAR GRÁFICO DE PIZZA */
+#graficoPizza{
+  display:block;
+  margin:0 auto;
 }
 
 canvas {
@@ -162,7 +139,6 @@ canvas {
   height:250px !important;
 }
 
-/* ================= REDES ================= */
 .redes {
   text-align:center;
   margin-top:25px;
@@ -180,14 +156,12 @@ canvas {
   color:#ff6600;
 }
 
-/* ================= VISITAS ================= */
 .visitas {
   text-align:center;
   margin-top:10px;
   font-weight:bold;
 }
 
-/* ================= FOOTER ================= */
 footer{
   text-align:center;
   margin-top:25px;
@@ -211,15 +185,72 @@ footer span{
   opacity:0.85;
 }
 
+/* ================= RESPONSIVIDADE ================= */
+
+@media (max-width: 900px){
+  .graficos {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px){
+  header h1{
+    font-size:20px;
+  }
+
+  header p{
+    font-size:12px;
+  }
+
+  button.theme{
+    font-size:9px;
+    padding:3px 5px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .redes i {
+    font-size:26px;
+  }
+
+  canvas {
+    height:200px !important;
+  }
+}
+
+@media (max-width: 400px){
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    padding:15px;
+  }
+
+  .card h2 {
+    font-size:18px;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1> 🌿 Monitor Ambiental </h1>
+<button class="theme" onclick="tema()">🌗</button>
+<h1>🌿 Monitor Ambiental</h1>
 <p>🌍 Sistema de Monitoramento Ambiental Inteligente</p>
-<button class="theme" onclick="tema()">🌗 Tema</button>
 </header>
 
 <div class="container">
